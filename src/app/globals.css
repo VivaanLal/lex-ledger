@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-ivory text-charcoal font-sans text-body antialiased;
+  }
+
+  ::selection {
+    background-color: rgba(184, 115, 51, 0.2);
+    color: #1a1f2e;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-ink tracking-tight font-serif;
+  }
+
+  /* Skip to content link */
+  .skip-link {
+    @apply absolute -top-full left-4 z-[100] bg-ink text-paper px-4 py-2 rounded-b-lg text-ui font-medium transition-all duration-200;
+  }
+
+  .skip-link:focus {
+    @apply top-0;
+  }
+}
+
+@layer components {
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-28 lg:py-36;
+  }
+
+  .section-padding-lg {
+    @apply py-20 md:py-36 lg:py-48;
+  }
+
+  /* Content container */
+  .container-content {
+    @apply mx-auto max-w-content px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Prose width for long-form editorial reading */
+  .container-prose {
+    @apply mx-auto max-w-[760px] px-5 sm:px-8;
+  }
+
+  /* Apple-inspired subtle borders and backdrop cards */
+  .apple-card {
+    @apply bg-paper/90 backdrop-blur-md rounded-[2rem] border border-border/70 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500;
+  }
+
+  .apple-badge {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-[0.16em];
+  }
+}
+
+/* Smooth keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
